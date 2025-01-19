@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+<body> 
+    <div id="clock" style="font-size: 70px;">00:00:00</div>
+    <div id="tanggal" style="font-size: 70px;"></div>
+    <script>
+        setInterval(function() { // sebuah method dalam js menggunakan waktu 1000 milisekon
+        let date = new Date();
+        let hours = date.getHours();
+        hours = hours < 10 ? "0" + hours : hours;
+        let minutes = date.getMinutes();
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        let seconds = date.getSeconds();
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        let colon = ":";
+
+        let tanggal = date.getDate();
+        let bulan = date. getMonth();
+        let tahun = date.getFullYear();
+        let hari = date.getDay();
+        //array hari
+        let array_hari = ["Minggu", "senin", "selasa", "Rabu", "kamis", "jum'at", "sabtu" ];
+        let hari_nama = array_hari[hari];
+        //array bulan
+        let array_bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" ];
+        let bulan_nama = array_bulan[bulan];
+
+        let  time = hours + colon + minutes + colon +seconds;
+        let keterangan = hari_nama + ", " + tanggal + " " + bulan_nama + " " + tahun;
+        
+        // console.log(time_baru);
+        let time_baru = '${hours}:${minutes}:${second}';
+        let keterangan_baru = '${hari_nama},${tanggal}, ${bulan_nama}';
+        
+        console.log(time_baru);
+        console.log(time);
+        document.getElementById("clock").innerText = time; // mengganti isi element id="clock" dengan nilai waktu
+        document.getElementById("tanggal").innerText = keterangan; // mengganti isi element id="clock" dengan nilai waktu
+        
+        // console.log(date);
+        },1000);
+
+    </script>
+</body>
+</html>
